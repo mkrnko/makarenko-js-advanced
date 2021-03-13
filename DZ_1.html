@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<title>ДЗ1</title>
+<meta charset="utf-8">
+<style>
+    .active {
+        color: green;
+    }
+
+    button {
+        margin: 10px;
+        display: block;
+    }
+</style>
+
+<body>
+    <ul id="main_list">
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+        <li>List Item 3</li>
+        <li>List Item 4</li>
+        <li>List Item 5</li>
+    </ul>
+    <button onclick="selectFirst()">
+        Выбрать первый элемент
+    </button>
+    <button onclick="selectLast()">
+        Выбрать последний элемент
+    </button>
+    <button onclick="selectNext()">
+        Выбрать следующий элемент
+    </button>
+    <button onclick="selectPrev()">
+        Выбрать предыдущий элемент
+    </button>
+    <button onclick="addList()">
+        Добавить элемент
+    </button>
+    <button onclick="deleteList()">
+        Удалить элемент
+    </button>
+    <button onclick="addToTop()">
+        Добавить в начало
+    </button>
+
+    <script>
+
+        var lists = document.getElementById('main_list');
+        var activeLi = lists.getElementsByClassName('active');
+
+        function selectFirst() {
+            var active = activeLi[0];
+            if (!(active == null)) {
+                active.classList.remove('active');
+            }
+            var first = lists.firstElementChild;
+            first.classList.add('active');
+        };
+
+        function selectLast() {
+            var active = activeLi[0];
+            if (!(active == null)) {
+                active.classList.remove('active');
+            }
+            var last = lists.lastElementChild;
+            last.classList.add('active');
+        };
+
+        function selectNext() {
+            var active = activeLi[0];
+            if (active == null) {
+                lists.firstElementChild.classList.add('active');
+            } else if (active.nextElementSibling == null) {
+                active.classList.remove('active');
+                lists.firstElementChild.classList.add('active');
+            } else {
+                active.classList.remove('active');
+                active.nextElementSibling.classList.add('active');
+            }
+        };
+
+        function selectPrev() {
+            var active = activeLi[0];
+            if (active == null) {
+                lists.lastElementChild.classList.add('active');
+            } else if (active.previousElementSibling == null) {
+                active.classList.remove('active');
+                lists.lastElementChild.classList.add('active');
+            } else {
+                active.classList.remove('active');
+                active.previousElementSibling.classList.add('active');
+            }
+        };
+
+        function addList() {
+            var newList = document.createElement('li');
+            newList.innerHTML = 'Новый пункт';
+            lists.appendChild(newList);
+        };
+
+        function deleteList() {
+            var last = lists.lastElementChild;
+            last.remove();
+        };
+
+        function addToTop() {
+            var newList = document.createElement('li');
+            newList.innerHTML = 'Топ пункт';
+            lists.insertBefore(newList, lists.firstElementChild);
+        };
+    </script>
+</body>
+
+</html>
