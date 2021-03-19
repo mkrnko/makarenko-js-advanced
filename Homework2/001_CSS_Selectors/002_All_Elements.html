@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>All, Elements</title>
+    <style>
+        /* * {
+            color: red;
+            text-decoration: none;
+        }
+
+        p {
+            color: brown;
+        } */
+
+        /* .class {
+            color: green;
+        } */
+
+        /* a {
+            font-weight: bold;
+            font-style: italic;
+            text-decoration: underline;
+        }
+
+        p,
+        a {
+            text-transform: uppercase;
+        }  */
+    </style>
+</head>
+
+<body>
+    <h1 class="class1" id="id1">Title</h1>
+    <p class="class">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+        anim id est laborum</p>
+    <a href="#">Link</a>
+
+    <script>
+        var all = document.querySelector('*');
+        var allClass = document.querySelectorAll('[class]');
+        var allID = document.querySelectorAll('[id]');
+        var paragr = document.getElementsByTagName('p');
+        var links = document.getElementsByTagName('a');
+        var textClass = document.querySelectorAll('.class');
+        var allStyleClass = '';
+
+
+        all.style.color = 'red';
+        all.style.textDecoration = 'none';
+
+        for (i = 0; i < paragr.length; i++) {
+            var p = paragr[i]
+            p.style.color = 'brown';
+            p.style.textTransform = 'uppercase';
+        }
+        for (i = 0; i < links.length; i++) {
+            var link = links[i];
+            link.style.fontWeight = 'bold';
+            link.style.fontStyle = 'italic';
+            link.style.textDecoration = 'underline';
+            link.style.textTransform = 'uppercase';
+        }
+        for (let item of allClass) {
+            item.classList.add('newclass')
+        }
+        for (let item of allID) {
+            item.style.marginTop = '10px';
+            item.style.background = 'red';
+        }
+        for (let item of textClass) {
+            item.style.color = 'green';
+        }
+
+        for (let item of allClass) {
+            // allStyleClass += `${item.className} - ${item.style.cssText}\n`
+            allStyleClass += `${item.style.cssText}\n`
+
+        }
+        console.log(`Все стили, что есть у элемента c классом newclass:\n\n${allStyleClass}`)
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Children, Parent</title>
+    <style>
+        /* p {
+            color: brown;
+        } */
+
+        /* div p a span {
+            color: red;
+        } */
+
+        /* div>span {
+            color: green;
+        } */
+    </style>
+</head>
+
+<body>
+    <h1 class="class1" id="id1">Title</h1>
+    <div>
+        <span>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco <span>SECOND SPAN</span>
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+            qui officia deserunt mollit anim id est laborum
+        </span>
+        <p>Lorem <span>ipsum</span> dolor sit amet, consectetur adipisicing elit. Quam fugiat voluptatem
+            in, impedit,
+            provident illum commodi blanditiis! Molestiae dicta, exercitationem repellat illo ratione laboriosam libero
+            voluptatem, necessitatibus blanditiis unde vel!</p>
+    </div>
+    <a href="#">Link</a>
+
+
+    <script>
+        
+        var allClass = document.querySelectorAll('[class]');
+        var allID = document.querySelectorAll('[id]');
+
+        var div_span = document.querySelectorAll('div>span');
+        var div_p_span = document.querySelectorAll('div>p>a>span');
+        var paragr = document.querySelectorAll('p');
+        var allStyleClass = '';
+
+        for (let item of div_span) {
+            item.style.color = 'green';
+        }
+        for (let item of paragr) {
+            item.style.color = 'brown';
+        }
+        for (let item of div_p_span) {
+            item.style.color = 'red';
+        }
+        for (let item of allClass) {
+            item.classList.add('newclass');
+        }
+        for (let item of allID) {
+            item.style.marginTop = '10px';
+            item.style.background = 'red';
+        }
+
+        for (let item of allClass) {
+            // allStyleClass += `${item.className} - ${item.style.cssText}\n`
+            allStyleClass += `${item.style.cssText}\n`
+
+        }
+        console.log(`Все стили, что есть у элемента c классом newclass:\n\n${allStyleClass}`)
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Id and classes</title>
+    <style>
+        /* #id1 {
+            color: red;
+        }
+        div.class1 {
+            color: blue;
+            font-size: 14px;
+            text-decoration: underline;
+        } */
+    </style>
+</head>
+
+<body>
+    <h1 id="id1">Title</h1>
+    <div class="class1">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla consequuntur, obcaecati recusandae enim
+        laboriosam eaque, sint incidunt. Perferendis mollitia incidunt blanditiis eveniet, fuga sapiente. Magni dicta
+        maxime fugiat sint soluta?
+    </div>
+    <script>
+        var title = document.getElementById('id1');
+        var text = document.querySelector('.class1');
+
+
+        //1
+        title.style.color = 'red';
+        title.style.marginTop = '10px';
+        title.style.background = 'red';
+
+        text.style.color = 'blue';
+        text.style.fontSize = '14px';
+        text.style.textDecoration = 'underline';
+
+        text.className += ' newclass';
+        text.classList.add('newclass');
+
+
+        //2
+
+        title.style.cssText = 'color:red;margin-top:10px;background:red';
+        text.style.cssText = 'color:blue;font-size:14px;text-decoration:underline';
+
+        //3
+
+        title.setAttribute('style', 'color:red;margin-top:10px;background: red');
+        text.setAttribute('style', 'color:blue;font-size:14px;text-decoration:underline;')
+
+        // console.log(newclass.style.cssText)
+
+
+        var computedStyle = getComputedStyle(document.querySelector('.newclass'));
+
+        console.log(`color: ${computedStyle.color}; \nfont-size: ${computedStyle.fontSize}; \ntext-decoration: ${computedStyle.textDecoration}`);
+        console.log(computedStyle);
+
+
+        
+    </script>
+</body>
+
+</html>
