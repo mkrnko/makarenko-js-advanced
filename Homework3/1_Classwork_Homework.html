@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        .timer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 50px auto;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid rgb(117, 184, 196);
+            font-size: 20px;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .btn {
+            width: 200px;
+            text-align: center;
+            font-style: italic;
+            font-weight: bold;
+            border-radius: 10%;
+            border: 2px solid rgb(117, 184, 196);
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+
+        }
+        .btn_wrapper{
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Создайте счетчик секунд, который начинает отчет с 1 и заканчивается на 30,
+также добавьте кнопки которые останавливают отчет, и запускают его заново и добавьте кнопку
+обнуляющую отcчет. Также попробуйте изменить код так чтобы отсчет начинался с 30 и заканчивался на 1. -->
+
+    <div class="timer">
+
+    </div>
+    <div class="btn_wrapper">
+        <div class="btn" id="stop" onclick="stopBtn()">Остановить отчет</div>
+        <div class="btn" id="start" onclick="startBtn()">Запустить отчет</div>
+        <div class="btn" id="reset" onclick="resetBtn()">Обнулить отчет</div>
+    </div>
+
+    <script>
+
+        var timer;
+        var timerX = 0;
+        secStart();
+
+        function secStart() {
+            document.querySelector('.timer').innerHTML = timerX;
+            timerX++;
+            if (timerX < 31) {
+                timer = setTimeout(secStart, 1000);
+            }
+            else {
+                clearTimeout(timer);
+            };
+        };
+
+        function stopBtn() {
+            clearTimeout(timer);
+
+        };
+
+        function resetBtn() {
+            timerX = 0;
+            document.querySelector('.timer').innerHTML = timerX;
+        };
+
+        function startBtn() {
+            secStart();
+        };
+    </script>
+    <!-- отсчет назад -->
+    <!-- <script>
+
+        var timer;
+        var timerX = 30;
+        secStart();
+
+        function secStart() {
+            document.querySelector('.timer').innerHTML = timerX;
+            timerX--;
+            if (timerX < 0) {
+                clearTimeout(timer);
+            }
+            else {
+                timer = setTimeout(secStart, 1000);
+
+            };
+        };
+
+        function stopBtn() {
+            clearTimeout(timer);
+
+        };
+
+        function resetBtn() {
+            timerX = 30;
+            document.querySelector('.timer').innerHTML = timerX;
+        };
+
+        function startBtn() {
+            secStart();
+        };
+    </script> -->
+</body>
+
+</html>

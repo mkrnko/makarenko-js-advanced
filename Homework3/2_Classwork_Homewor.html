@@ -1,0 +1,51 @@
+<!-- 
+    Запросите у пользователя ввести какую-то фразу. 
+    Отобразите каждое отдельное слово в виде списка ul li. 
+    Также отобразите первое слово UPPERCASE, а последние 2 с маленькой. 
+    Найдите все буквы "а" их количество в модальное окно. 
+ -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+
+<body>
+    <div class="wrapper">
+    </div>
+    <script>
+        var wrapper = document.querySelector('.wrapper')
+        var ul = document.createElement('ul');
+        var requestWords = prompt('Введите какую-то фразу', '');
+        var regEx = /[._^%$#!~@,-;:?\s]/gm;
+        var regExLetter = /[A-a]/g;
+
+        var newLine = requestWords.split(regEx);
+        var aCount = requestWords.match(regExLetter);
+
+        wrapper.insertBefore(ul, wrapper.firstElementChild);
+
+        for (i = 0; i < newLine.length; i++) {
+            if (newLine[i] != '') {
+                ul.insertAdjacentHTML('beforeend', '<li>' + newLine[i] + '</li>');
+            }
+        }
+        ul.firstElementChild.style.textTransform = 'uppercase';
+        if (ul.children.length == 2) {
+            ul.lastElementChild.style.textTransform = 'lowercase';
+        } else if (ul.children.length > 2) {
+            ul.lastElementChild.style.textTransform = 'lowercase';
+            ul.lastElementChild.previousElementSibling.style.textTransform = 'lowercase';
+        }
+        if (aCount > 0) {
+            aletr(`Количество буквы а - ${aCount.length}`)
+        }
+
+    </script>
+
+</body>
+
+</html>
