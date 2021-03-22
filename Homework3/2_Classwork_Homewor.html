@@ -20,29 +20,44 @@
         var wrapper = document.querySelector('.wrapper')
         var ul = document.createElement('ul');
         var requestWords = prompt('Введите какую-то фразу', '');
-        var regEx = /[._^%$#!~@,-;:?\s]/gm;
-        var regExLetter = /[A-a]/g;
+        var regEx = /\s/g;
+        var regExLetter = /[а|a]/gi;
 
-        var newLine = requestWords.split(regEx);
-        var aCount = requestWords.match(regExLetter);
+        if ((requestWords == null) || (requestWords == '')) {
+            alert(`Вы не ввели фразу`)
+        } else {
+            var newLine = requestWords.split(regEx);
+            var aLetterCount = requestWords.match(regExLetter);
 
-        wrapper.insertBefore(ul, wrapper.firstElementChild);
+            for (i = 0; i < newLine.length; i++) {
+                if (newLine[i] != '') {
+                    ul.insertAdjacentHTML('beforeend', `<li> ${newLine[i]}  </li>`);
+                }
+            };
 
-        for (i = 0; i < newLine.length; i++) {
-            if (newLine[i] != '') {
-                ul.insertAdjacentHTML('beforeend', '<li>' + newLine[i] + '</li>');
-            }
-        }
-        ul.firstElementChild.style.textTransform = 'uppercase';
-        if (ul.children.length == 2) {
-            ul.lastElementChild.style.textTransform = 'lowercase';
-        } else if (ul.children.length > 2) {
-            ul.lastElementChild.style.textTransform = 'lowercase';
-            ul.lastElementChild.previousElementSibling.style.textTransform = 'lowercase';
-        }
-        if (aCount > 0) {
-            aletr(`Количество буквы а - ${aCount.length}`)
-        }
+            wrapper.insertBefore(ul, wrapper.firstElementChild);
+            ul.firstElementChild.style.textTransform = 'uppercase';
+
+            if (ul.children.length == 2) {
+                ul.lastElementChild.style.textTransform = 'lowercase';
+            } else if (ul.children.length > 2) {
+                ul.lastElementChild.style.textTransform = 'lowercase';
+                ul.lastElementChild.previousElementSibling.style.textTransform = 'lowercase';
+            };
+
+            var showAlert = function () {
+                if (aLetterCount) {
+                    alert(`Количество буквы а - ${aLetterCount.length}`)
+
+                } else {
+                    alert(`Количество буквы а - 0`)
+                }
+            };
+            setTimeout(showAlert, 1000);
+        };
+
+
+
 
     </script>
 
