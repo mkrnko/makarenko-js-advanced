@@ -5,7 +5,16 @@
     <meta charset="UTF-8">
     <title>Homework</title>
     <style>
-        .timer {
+        .title{
+            color:rgb(117, 184, 196);
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px
+        }
+
+        .timer,
+        .timer2 {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -35,6 +44,7 @@
             display: flex;
             justify-content: center;
             margin-top: 50px;
+            margin-bottom: 100px;
         }
     </style>
 </head>
@@ -44,6 +54,7 @@
 также добавьте кнопки которые останавливают отчет, и запускают его заново и добавьте кнопку
 обнуляющую отcчет. Также попробуйте изменить код так чтобы отсчет начинался с 30 и заканчивался на 1. -->
 
+<div class="title">отсчет вперед</div>
     <div class="timer">
 
     </div>
@@ -51,6 +62,16 @@
         <div class="btn" id="stop" onclick="stopBtn()">Остановить отчет</div>
         <div class="btn" id="start" onclick="startBtn()">Запустить отчет</div>
         <div class="btn" id="reset" onclick="resetBtn()">Обнулить отчет</div>
+    </div>
+
+    <div class="title">отсчет назад</div>
+    <div class="timer2">
+
+    </div>
+    <div class="btn_wrapper">
+        <div class="btn" id="stop2" onclick="stopBtn2()">Остановить отчет</div>
+        <div class="btn" id="start2" onclick="startBtn2()">Запустить отчет</div>
+        <div class="btn" id="reset2" onclick="resetBtn2()">Обнулить отчет</div>
     </div>
 
     <script>
@@ -85,38 +106,38 @@
         };
     </script>
     <!-- отсчет назад -->
-    <!-- <script>
+    <script>
 
-        var timer;
-        var timerX = 30;
-        secStart();
+        var timer2;
+        var timerX2 = 30;
+        secStart2();
 
-        function secStart() {
-            document.querySelector('.timer').innerHTML = timerX;
-            timerX--;
-            if (timerX < 0) {
-                clearTimeout(timer);
+        function secStart2() {
+            document.querySelector('.timer2').innerHTML = timerX2;
+            timerX2--;
+            if (timerX2 < 0) {
+                clearTimeout(timer2);
             }
             else {
-                timer = setTimeout(secStart, 1000);
+                timer2 = setTimeout(secStart2, 1000);
 
             };
         };
 
-        function stopBtn() {
-            clearTimeout(timer);
+        function stopBtn2() {
+            clearTimeout(timer2);
 
         };
 
-        function resetBtn() {
-            timerX = 30;
-            document.querySelector('.timer').innerHTML = timerX;
+        function resetBtn2() {
+            timerX2 = 30;
+            document.querySelector('.timer2').innerHTML = timerX2;
         };
 
-        function startBtn() {
-            secStart();
+        function startBtn2() {
+            secStart2();
         };
-    </script> -->
+    </script>
 </body>
 
 </html>
