@@ -29,6 +29,7 @@
         } else {
             var newLine = requestWords.split(regEx);
             var aLetterCount = requestWords.match(regExLetter);
+            wrapper.insertBefore(ul, wrapper.firstElementChild);
 
             for (i = 0; i < newLine.length; i++) {
                 if (newLine[i] != '') {
@@ -36,7 +37,6 @@
                 }
             };
 
-            wrapper.insertBefore(ul, wrapper.firstElementChild);
             ul.firstElementChild.style.textTransform = 'uppercase';
 
             if (ul.children.length == 2) {
@@ -49,7 +49,6 @@
             var showAlert = function () {
                 if (aLetterCount) {
                     alert(`Количество буквы а - ${aLetterCount.length}`)
-
                 } else {
                     alert(`Количество буквы а - 0`)
                 }
