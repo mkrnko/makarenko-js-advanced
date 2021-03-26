@@ -1,0 +1,72 @@
+<!--
+Создайте ссылку и див с текстом внутри, который изначально при загрузке страницы будет скрыт.
+При клике на ссылку див появляется, если повторно нажать ссылку див и текст должны пропасть.
+Также создайте кнопку, которая будет отменять выполнение обработчика клика по ссылке.
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+
+    .link {
+        color: darkcyan;
+    }
+
+    .hide {
+        display: none;
+        margin-top: 20px;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .deleteBtn {
+        display: block;
+        margin: 20px auto 0;
+        padding: 15px;
+        background: transparent;
+        border: 1px solid teal;
+        color: teal;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <a href="https://itea.ua/" class="link">ITEA</a>
+    <div class="hide">Всеукраинский образовательный проект комплексной подготовки и развития
+        специалистов IT-индустрии, способных вывести Украину в мировые лидеры. ІТЕА помогает лучшим выпускникам успешно
+        начать карьеру в IТ-сфере.
+        Благодаря сотрудничеству с платформой JUNGO, мы предоставляем все возможности найти хорошего работодателя и
+        начать стажировку в крупнейших ІT-компаниях.</div>
+    <button class="deleteBtn">
+        Удалить обработчик
+    </button>
+
+    <script>
+        var link = document.querySelector(".link");
+        var divHide = document.querySelector(".hide");
+        var deleteBtn = document.querySelector(".deleteBtn");
+
+        link.addEventListener("click", linkHandler);
+        deleteBtn.addEventListener("click", removelinkHandler);
+
+        function linkHandler(e) {
+            e.preventDefault();
+            divHide.classList.toggle('show');
+        }
+
+        function removelinkHandler() {
+            link.removeEventListener("click", linkHandler);
+        }
+
+    </script>
+</body>
+
+</html>

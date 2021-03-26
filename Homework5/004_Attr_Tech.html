@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- <script>
+    window.onload = function () {
+      var mainDiv = document.getElementById("main-div");
+      mainDiv.onmouseover = function(e) {
+        var target = e && e.target || window.event.srcElement;
+        var dataToggleId = target.getAttribute('data-tooltip');
+        if (!dataToggleId) {
+            return
+        };
+        alert(dataToggleId);
+    };
+};
+</script> -->
+  <style>
+    .tips {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main-div">
+    <span data-tooltip="наведите">наведите</span>
+    <span data-tooltip="для">для</span>
+    <span data-tooltip="подсказки">подсказки</span>
+  </div>
+
+
+  <script>
+    var mainDiv = document.getElementById("main-div");
+    var toolTip = document.createElement('span');
+    toolTip.classList.add('tips');
+
+    mainDiv.addEventListener('mouseover', showTolltip);
+
+    function showTolltip(e) {
+      var target = e.target;
+      var dataToggleId = target.getAttribute('data-tooltip');
+
+      toolTip.remove();
+
+      if (!dataToggleId) {
+        return
+      } else {
+        target.style.position = 'relative';
+        toolTip.innerText = dataToggleId;
+        target.append(toolTip);
+      }
+    }
+
+  </script>
+</body>
+
+</html>
