@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>HomeWork</title>
+</head>
+<style>
+	.square {
+		display: block;
+		width: 100px;
+		height: 100px;
+		background: #000;
+		position: relative;
+		left: 0;
+		top: 0;
+
+	}
+</style>
+
+<body>
+	<div class="square">
+
+	</div>
+
+	<button class="stop">stop</button>
+	<!-- 
+	1. drag and drop;
+	2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
+	при попадании div к краю окна, он переходит к началу окна.
+	-->
+
+	<script>
+
+		var squareDiv = document.querySelector('.square');
+		var stopDiv = document.querySelector('.stop');
+		let left;
+		let timer;
+
+		squareDiv.addEventListener('click', moveHandler);
+		stopDiv.addEventListener('click', stopHandler);
+
+		function moveHandler(e) {
+			timer = setInterval(move, 50);
+		}
+		function move() {
+			if ((parseInt(getComputedStyle(squareDiv).left) + 110) >= document.documentElement.clientWidth) {
+				squareDiv.style.left = 0 + 'px';
+			} else {
+				left = parseInt(getComputedStyle(squareDiv).left) + 10;
+				squareDiv.style.left = left + 'px';
+			}
+		}
+		function stopHandler() {
+			clearInterval(timer)
+		}
+
+	</script>
+</body>
+
+</html>
