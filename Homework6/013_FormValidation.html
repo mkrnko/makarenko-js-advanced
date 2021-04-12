@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Пример проверки достоверности ввода</title>
+    <script type="text/javascript" src="Validate.js"></script>
+    <style type="text/css">
+        input.invalid {
+            background-color: Pink;
+        }
+
+        input.valid {
+            background-color: LightGreen !important;
+        }
+    </style>
+</head>
+<body>
+    <form name="form1">
+            Name:
+        <input type="text" name="userName" onchange="validate(this, this.dataset.pattern)" data-pattern="\S"/><br />
+            email:
+        <input type="text" name="email" onchange="validate(this, this.dataset.pattern)" data-pattern="\b[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,4}\b" /><br />
+            zipcode:
+        <input type="text" name="zip" onchange="validate(this, this.dataset.pattern)"  data-pattern="\d{5}"/><br />
+        <input type="submit" />
+    </form>
+</body>
+</html>
