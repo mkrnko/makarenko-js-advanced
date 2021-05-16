@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>004_tab update</title>
+</head>
+<body>
+    <input type="text" placeholder="Your name">
+    <br>
+    <input type="button" value="Save">
+    <script>
+        var btn = document.querySelector('[type="button"]');
+
+        window.addEventListener('storage', storageHandler);
+
+        btn.addEventListener('click', clickHandler);
+
+        function clickHandler() {
+            var userName = document.querySelector('[type="text"]').value;
+            localStorage.setItem('userName', userName);
+            document.querySelector('title').innerText = `Hello, ${localStorage.getItem('userName')}`
+        }
+
+        function storageHandler() {
+            document.querySelector('title').innerText = `Hello, ${localStorage.getItem('userName')}`
+        }
+    </script>
+    
+</body>
+</html>
