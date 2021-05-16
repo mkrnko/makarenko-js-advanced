@@ -1,0 +1,98 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+
+</head>
+
+<body>
+
+    <script>
+        // //INHERITANCE
+        // class Men {
+        //     constructor(walk, eat, drink) {
+        //         this.walk = walk;
+        //         this.eat = eat;
+        //         this.drink = drink;
+        //     }
+        //     showWalk() {
+        //         return `walk - ${this.walk}`
+        //     }
+        //     showEat() {
+        //         return `eat - ${this.eat}`
+        //     }
+        //     showDrink() {
+        //         return `drink - ${this.drink}`
+        //     }
+        // }
+
+        // class Soldier extends Men{
+        //     constructor(walk, eat, drink, shoot) {
+        //         super(walk, eat, drink)
+        //         this.shoot = shoot;
+        //     }
+        //     showShoot() {
+        //         return `shoot - ${this.shoot}`
+        //     }
+        // }
+        // class Doctor extends Men{
+        //     constructor(walk, eat, drink, cure) {
+        //         super(walk, eat, drink)
+        //         this.cure = cure;
+        //     }
+        //     showCure() {
+        //         return `shoot - ${this.cure}`
+        //     }
+        // }
+
+        // let me = new Soldier('run', 'meat', 'water', 'pistol');
+        // let me2 = new Doctor('run', 'bread', 'milk', 'therapist');
+
+        // console.log(me.showDrink());
+        // console.log(me2.showDrink());
+
+
+        //POLIMORPHISM
+        class Cure {
+            constructor(cure) {
+                this.cure = cure;
+            }
+            showCure() {
+                return `cure - ${this.cure}`
+            }
+        }
+
+        class Doctor extends Cure{
+            constructor(cure, walk, eat, drink) {
+                super(cure)
+                this.walk = walk;
+                this.eat = eat;
+                this.drink = drink;
+            }
+        }
+        class Dentist extends Doctor{
+            showCure() {
+                return `cure - treat teeth`
+            }
+        }
+        class Surgeon extends Doctor{
+            showCure() {
+                return `cure - perform operations`
+            }
+        }
+
+        let me3 = new Doctor('therapist', 'run', 'bread', 'water');
+        let me4 = new Dentist( 'run', 'meat', 'coffee');
+        let me5 = new Surgeon( 'run', 'bread', 'milk');
+
+
+        console.log(me3.showCure());
+        console.log(me4.showCure());
+        console.log(me5.showCure());
+    </script>
+</body>
+
+</html>

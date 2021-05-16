@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .modal-icon {
+            /* display: none; */
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(0, 0, 0, 0.8);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 400px;
+
+        }
+
+        input {
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: center;
+
+        }
+
+        input::placeholder {
+            text-align: center;
+        }
+
+        .container {
+            margin: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<!-- Создайте страницу которая запрашивает имя пользователя, если пользователь вводит "Admin" либо "admin" он попадает на страницу,
+    которая оповещает его о том что " Пользоваетль Admin(не статическая строка, а данные что ввел пользователь) вошел в систему"
+    а рядом разместите кнопку "Выход" которая вернет пользователя к модальному окну ввода логина. Реализуйте код как для куки так и для localstorage. -->
+
+<body>
+
+    <div class="modal-icon">
+        <form>
+            <input type="text" name='name' placeholder="Nickname">
+            <input type="button" value="Вход">
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="user"></div>
+        <button class="logOut">Выход</button>
+    </div>
+
+
+    <script>
+        var modal = document.querySelector('.modal-icon');
+        var logInSubmit = document.querySelector('form [type="button"]');
+        var nickname = document.querySelector('form [type="text"]');
+        var logOut = document.querySelector('.logOut');
+        var container = document.querySelector('.container');
+
+        var users = ['Admin', 'admin'];
+        logInSubmit.addEventListener('click', logInHadler);
+        logOut.addEventListener('click', logOutHadler);
+
+
+
+        //LOCALSTORAGE
+
+        localStorage.setItem("users", JSON.stringify(users));
+
+        logInSubmit.addEventListener('click', logInHadler);
+        logOut.addEventListener('click', logOutHadler);
+
+        function logInHadler(e) {
+            var users = JSON.parse(localStorage.users)
+            for (item of users) {
+                if (item == nickname.value) {
+                    container.children[0].innerHTML = `Пользоваетль ${nickname.value} вошел в систему`;
+                    container.style.display = 'block';
+                    modal.style.display = 'none'
+                }
+            }
+            e.preventDefault();
+        };
+        function logOutHadler() {
+            nickname.value = '';
+            container.style.display = 'none';
+            modal.style.display = 'flex'
+        };
+
+
+        //COOKIE
+
+        // var cookies = document.cookie;
+        // cookies = "users=" + JSON.stringify(users);
+
+        // function logInHadler(e) {
+        //     var users = findCookieValue('users');
+        //     for (item of users) {
+        //         if (item == nickname.value) {
+        //             container.children[0].innerHTML = `Пользоваетль ${nickname.value} вошел в систему`;
+        //             container.style.display = 'block';
+        //             modal.style.display = 'none'
+        //         }
+        //     }
+        //     e.preventDefault();
+        // };
+        // function findCookieValue(cookieName) {
+        //         var pos = cookies.indexOf(cookieName + "=");
+        //         if (pos != -1) {
+        //             var start = pos + cookieName.length + 1;
+        //             var end = cookies.indexOf(";", start);
+        //             if (end == -1) end = cookies.length;
+        //             var value = JSON.parse(cookies.substring(start, end));
+        //             return value;
+        //         }
+        //     };
+        // function logOutHadler() {
+        //     nickname.value = '';
+        //     container.style.display = 'none';
+        //     modal.style.display = 'flex'
+        // };
+
+    </script>
+</body>
+
+</html>
